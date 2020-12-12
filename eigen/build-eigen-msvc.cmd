@@ -9,7 +9,7 @@ set eigen_pkg_name=eigen-%eigen_version%
 set eigen_src_dir=%work_dir%\%eigen_pkg_name%
 set eigen_build_dir=%work_dir%\build
 set eigen_install_dir=D:\Library\libeigen
-set cmake_boost_dir=D:\Library\libboost\lib\cmake\Boost-1.74.0
+set cmake_boost_dir=D:\Library\libboost\lib\cmake\Boost-1.75.0
 set cmake_gen_type="Visual Studio 15 2017 Win64"
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
 
