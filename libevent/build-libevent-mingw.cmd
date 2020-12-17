@@ -5,15 +5,15 @@ setlocal
 set libevent_version=2.1.12
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
-set libevent_pkg_name=libevent-release-%libevent_version%-stable
+set libevent_pkg_name=libevent-%libevent_version%-stable
 set libevent_src_dir=%work_dir%\%libevent_pkg_name%
 set libevent_build_dir=%work_dir%\build
 set libevent_install_dir=D:\Library\libevent
 set openssl_root_dir=D:\Library\OpenSSL
 set zlib_inc_dir=D:\Library\libzlib\include
-set zlib_lib="D:/Library/libzlib/lib/libzlib.dll.a"
+set zlib_lib=D:\Library\libzlib\lib\libzlib.dll.a
 
-if not exist %libevent_pkg_name%.zip (
+if not exist %libevent_pkg_name%.tar.gz (
     echo **** NOT FIND CODE PACKAGE ****
     pause
     exit
@@ -52,7 +52,9 @@ if exist %libevent_install_dir% (
     rmdir /S /Q %libevent_install_dir%
 )
 
-7z x -aoa %libevent_pkg_name%.zip
+7z x -aoa %libevent_pkg_name%.tar.gz
+7z x -aoa %libevent_pkg_name%.tar
+del /Q %libevent_pkg_name%.tar
 
 cd /D %libevent_src_dir%
 cmake -G"MinGW Makefiles" -S. -B%libevent_build_dir% -DCMAKE_INSTALL_PREFIX=%libevent_install_dir% ^
