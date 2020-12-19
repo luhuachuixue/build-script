@@ -2,7 +2,7 @@
 
 setlocal
 
-set pugixml_version=1.11.2
+set pugixml_version=1.11.3
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
 set pugixml_pkg_name=pugixml-%pugixml_version%
