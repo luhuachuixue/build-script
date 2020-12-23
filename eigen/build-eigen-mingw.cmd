@@ -2,7 +2,7 @@
 
 setlocal
 
-set eigen_version=master
+set eigen_version=3.3.9
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
 set eigen_pkg_name=eigen-%eigen_version%
