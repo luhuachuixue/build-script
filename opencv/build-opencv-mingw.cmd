@@ -2,7 +2,7 @@
 
 setlocal
 
-set opencv_version=4.5.0
+set opencv_version=4.5.1
 set work_dir=D:\tmp
 set opencv_pkg_name=opencv-%opencv_version%
 set opencv_extra_pkg_name=opencv_contrib-%opencv_version%

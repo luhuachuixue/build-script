@@ -2,7 +2,7 @@
 
 setlocal
 
-set opencv_version=4.5.0
+set opencv_version=4.5.1
 set work_dir=D:\tmp
 set opencv_pkg_name=opencv-%opencv_version%
 set opencv_extra_pkg_name=opencv_contrib-%opencv_version%
@@ -103,8 +103,10 @@ if not defined http_proxy (
     7z x -aoa .cache.zip -o%opencv_src_dir%
 )
 
-cd /D %opencv_extra_mod_dir%/cvv/src/stfl
+cd /D %opencv_extra_mod_dir%\cvv\src\stfl
 %sed_tool% -i "1s/^/\xef\xbb\xbf/" stringutils.cpp
+cd /D %opencv_src_dir%\modules\java\generator
+%sed_tool% -i "s/open(path, \"rt\")/open(path, \"rt\", -1, \"utf-8\")/g" gen_java.py
 
 cd /D %opencv_src_dir%
 cmake -G%cmake_gen_type% -S. -B%opencv_build_dir% -DCMAKE_INSTALL_PREFIX=%opencv_install_dir% ^
