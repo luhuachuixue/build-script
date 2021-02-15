@@ -56,7 +56,10 @@ powershell -Command "(gc win32config) -replace '\(TOOLS32\)\\bin\\cl', '(TOOLS32
 powershell -Command "(gc win32config) -replace 'LINK =			\$\(link\) -out:', 'LINK = link ws2_32.lib /out:' | Out-File win32config"
 powershell -Command "(gc win32config) -replace 'LIBRARY_LINK =		lib -out:', 'LIBRARY_LINK = lib /out:' | Out-File win32config"
 powershell -Command "(gc win32config) -replace 'msvcirt.lib', 'msvcrt.lib' | Out-File win32config"
-REM powershell -Command "(gc win32config) -replace '-DNO_OPENSSL=1', '-DNO_OPENSSL=1 -DDEBUG' | Out-File win32config"
+@REM powershell -Command "(gc win32config) -replace '-DNO_OPENSSL=1', '-DNO_OPENSSL=1 -DDEBUG' | Out-File win32config"
+powershell -Command "(gc win32config) -replace '-DNO_OPENSSL=1', '-DNO_OPENSSL=1 -DNO_GETIFADDRS' | Out-File win32config"
+powershell -Command "(gc groupsock\GroupsockHelper.cpp) -replace '&one,', '(char *)&one,' | Out-File groupsock\GroupsockHelper.cpp"
+powershell -Command "(gc groupsock\GroupsockHelper.cpp) -replace 'option_value,', '(char *)option_value,' | Out-File groupsock\GroupsockHelper.cpp"
 
 cd WindowsAudioInputDevice
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace '!include    <ntwin32.mak>', '#!include    <ntwin32.mak>' | Out-File WindowsAudioInputDevice.mak"
@@ -65,7 +68,7 @@ powershell -Command "(gc WindowsAudioInputDevice.mak) -replace '\(TOOLS32\)\\bin
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace 'LINK =			\$\(link\) -out:', 'LINK = link ws2_32.lib /out:' | Out-File WindowsAudioInputDevice.mak"
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace 'LIBRARY_LINK =		lib -out:', 'LIBRARY_LINK = lib /out:' | Out-File WindowsAudioInputDevice.mak"
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace 'msvcirt.lib', 'msvcrt.lib' | Out-File WindowsAudioInputDevice.mak"
-REM powershell -Command "(gc WindowsAudioInputDevice.mak) -replace '-DNO_OPENSSL=1', '-DNO_OPENSSL=1 -DDEBUG' | Out-File WindowsAudioInputDevice.mak"
+@REM powershell -Command "(gc WindowsAudioInputDevice.mak) -replace '-DNO_OPENSSL=1', '-DNO_OPENSSL=1 -DDEBUG' | Out-File WindowsAudioInputDevice.mak"
 cd ..
 
 call %msvc_env%
