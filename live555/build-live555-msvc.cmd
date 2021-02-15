@@ -57,6 +57,11 @@ powershell -Command "(gc win32config) -replace 'LINK =			\$\(link\) -out:', 'LIN
 powershell -Command "(gc win32config) -replace 'LIBRARY_LINK =		lib -out:', 'LIBRARY_LINK = lib /out:' | Out-File win32config"
 powershell -Command "(gc win32config) -replace 'msvcirt.lib', 'msvcrt.lib' | Out-File win32config"
 @REM powershell -Command "(gc win32config) -replace '-DNO_OPENSSL=1', '-DNO_OPENSSL=1 -DDEBUG' | Out-File win32config"
+@REM -----------------------------------------------------------------------------------------------------------------
+@REM setsockopt() 4th parameter type is different between Windows and UNIX
+@REM Windows winsock2.h: int setsockopt(SOCKET s, int level, int optname, const char *optval, int optlen);
+@REM UNIX  sys/socket.h: int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen);
+@REM -----------------------------------------------------------------------------------------------------------------
 powershell -Command "(gc win32config) -replace '-DNO_OPENSSL=1', '-DNO_OPENSSL=1 -DNO_GETIFADDRS' | Out-File win32config"
 powershell -Command "(gc groupsock\GroupsockHelper.cpp) -replace '&one,', '(char *)&one,' | Out-File groupsock\GroupsockHelper.cpp"
 powershell -Command "(gc groupsock\GroupsockHelper.cpp) -replace 'option_value,', '(char *)option_value,' | Out-File groupsock\GroupsockHelper.cpp"
