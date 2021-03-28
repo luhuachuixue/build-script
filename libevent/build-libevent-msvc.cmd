@@ -14,6 +14,8 @@ set zlib_inc_dir=D:\Library\libzlib\include
 set zlib_lib=D:\Library\libzlib\lib\zlib.lib
 set cmake_gen_type="Visual Studio 15 2017 Win64"
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set cmake_gen_type="Visual Studio 15 2017"
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 if not exist %libevent_pkg_name%.tar.gz (
     echo **** NOT FIND CODE PACKAGE ****

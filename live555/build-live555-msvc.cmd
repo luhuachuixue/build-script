@@ -7,8 +7,11 @@ set work_dir=%work_dir:~0,-1%
 set live555_pkg_name=live555-latest
 set live555_src_dir=%work_dir%\live
 set live555_install_dir=D:\Library\Live555
-set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
 set msvc_path="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023"
+set os_arch=x64
+set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set os_arch=x86
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 cd /D %work_dir%
 
@@ -52,7 +55,7 @@ del /Q %live555_pkg_name%.tar
 cd /D %live555_src_dir%
 powershell -Command "(gc win32config) -replace '!include    <ntwin32.mak>', '#!include    <ntwin32.mak>' | Out-File win32config"
 powershell -Command "(gc win32config) -replace 'c:\\Program Files\\DevStudio\\Vc', '%msvc_path%' | Out-File win32config"
-powershell -Command "(gc win32config) -replace '\(TOOLS32\)\\bin\\cl', '(TOOLS32)\bin\Hostx64\x64\cl' | Out-File win32config"
+powershell -Command "(gc win32config) -replace '\(TOOLS32\)\\bin\\cl', '(TOOLS32)\bin\Host%os_arch%\%os_arch%\cl' | Out-File win32config"
 powershell -Command "(gc win32config) -replace 'LINK =			\$\(link\) -out:', 'LINK = link ws2_32.lib /out:' | Out-File win32config"
 powershell -Command "(gc win32config) -replace 'LIBRARY_LINK =		lib -out:', 'LIBRARY_LINK = lib /out:' | Out-File win32config"
 powershell -Command "(gc win32config) -replace 'msvcirt.lib', 'msvcrt.lib' | Out-File win32config"
@@ -69,7 +72,7 @@ powershell -Command "(gc groupsock\GroupsockHelper.cpp) -replace 'option_value,'
 cd WindowsAudioInputDevice
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace '!include    <ntwin32.mak>', '#!include    <ntwin32.mak>' | Out-File WindowsAudioInputDevice.mak"
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace 'c:\\Program Files\\DevStudio\\Vc', '%msvc_path%' | Out-File WindowsAudioInputDevice.mak"
-powershell -Command "(gc WindowsAudioInputDevice.mak) -replace '\(TOOLS32\)\\bin\\cl', '(TOOLS32)\bin\Hostx64\x64\cl' | Out-File WindowsAudioInputDevice.mak"
+powershell -Command "(gc WindowsAudioInputDevice.mak) -replace '\(TOOLS32\)\\bin\\cl', '(TOOLS32)\bin\Host%os_arch%\%os_arch%\cl' | Out-File WindowsAudioInputDevice.mak"
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace 'LINK =			\$\(link\) -out:', 'LINK = link ws2_32.lib /out:' | Out-File WindowsAudioInputDevice.mak"
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace 'LIBRARY_LINK =		lib -out:', 'LIBRARY_LINK = lib /out:' | Out-File WindowsAudioInputDevice.mak"
 powershell -Command "(gc WindowsAudioInputDevice.mak) -replace 'msvcirt.lib', 'msvcrt.lib' | Out-File WindowsAudioInputDevice.mak"

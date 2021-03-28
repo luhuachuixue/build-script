@@ -13,6 +13,7 @@ set lua_pkg_name=lua-%lua_version%
 set lua_src_dir=%work_dir%\%lua_pkg_name%
 set lua_install_dir=D:\Library\lua
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 if not exist %lua_pkg_name%.tar.gz (
     echo **** NOT FIND CODE PACKAGE ****

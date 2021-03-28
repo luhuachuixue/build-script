@@ -10,6 +10,8 @@ set boost_src_dir=%work_dir%\%boost_pkg_name%
 set boost_build_dir=%work_dir%\build
 set boost_install_dir=D:\Library\libboost
 set tool_set=gcc
+set addr_model=64
+@REM set addr_model=32
 
 if not exist %boost_pkg_name%.7z (
     echo **** NOT FIND CODE PACKAGE ****
@@ -52,7 +54,7 @@ echo.
 echo **** B2 PROJECT GENERATED ****
 echo.
 
-b2 -j8 --build-dir=%boost_build_dir% --prefix=%boost_install_dir% --layout=tagged --build-type=complete threading=multi link=static runtime-link=shared address-model=64 install
+b2 -j8 --build-dir=%boost_build_dir% --prefix=%boost_install_dir% --layout=tagged --build-type=complete threading=multi link=static runtime-link=shared address-model=%addr_model% install
 
 @REM mkdir %boost_install_dir%\bin
 @REM move %boost_install_dir%\lib\*.dll %boost_install_dir%\bin

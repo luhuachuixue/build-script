@@ -10,7 +10,10 @@ set boost_src_dir=%work_dir%\%boost_pkg_name%
 set boost_build_dir=%work_dir%\build
 set boost_install_dir=D:\Library\libboost
 set tool_set=vc141
+set addr_model=64
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set addr_model=32
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 if not exist %boost_pkg_name%.7z (
     echo **** NOT FIND CODE PACKAGE ****
@@ -53,7 +56,7 @@ echo.
 echo **** B2 PROJECT GENERATED ****
 echo.
 
-b2 -j8 --build-dir=%boost_build_dir% --prefix=%boost_install_dir% --build-type=complete threading=multi link=shared runtime-link=shared address-model=64 install
+b2 -j8 --build-dir=%boost_build_dir% --prefix=%boost_install_dir% --build-type=complete threading=multi link=shared runtime-link=shared address-model=%addr_model% install
 
 mkdir %boost_install_dir%\bin
 move %boost_install_dir%\lib\*.dll %boost_install_dir%\bin

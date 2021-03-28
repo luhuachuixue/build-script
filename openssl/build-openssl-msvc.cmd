@@ -2,7 +2,7 @@
 
 setlocal
 
-set openssl_version=1.1.1j
+set openssl_version=1.1.1k
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
 set openssl_pkg_name=openssl-%openssl_version%
@@ -11,6 +11,8 @@ set openssl_install_dir=D:\Library\OpenSSL
 set openssl_ssl_dir=%openssl_install_dir%\ssl
 set target_platform=VC-WIN64A
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set target_platform=VC-WIN32
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 if not exist %openssl_pkg_name%.tar.gz (
     echo **** NOT FIND CODE PACKAGE ****

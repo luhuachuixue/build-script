@@ -2,19 +2,19 @@
 
 setlocal
 
-set pugixml_version=1.11.4
+set portaudio_version=19.7.0
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
-set pugixml_pkg_name=pugixml-%pugixml_version%
-set pugixml_src_dir=%work_dir%\%pugixml_pkg_name%
-set pugixml_build_dir=%work_dir%\build
-set pugixml_install_dir=D:\Library\libpugixml
+set portaudio_pkg_name=pa_stable_candidate_v190700_20210307
+set portaudio_src_dir=%work_dir%\%portaudio_pkg_name%
+set portaudio_build_dir=%work_dir%\tmp-build
+set portaudio_install_dir=D:\Library\libportaudio
 set cmake_gen_type="Visual Studio 15 2017 Win64"
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
 @REM set cmake_gen_type="Visual Studio 15 2017"
 @REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
-if not exist %pugixml_pkg_name%.zip (
+if not exist %portaudio_pkg_name%.zip (
     echo **** NOT FIND CODE PACKAGE ****
     pause
     exit
@@ -40,30 +40,30 @@ if not exist %msvc_env% (
     exit
 )
 
-if exist %pugixml_src_dir% (
-    rmdir /S /Q %pugixml_src_dir%
+if exist %portaudio_src_dir% (
+    rmdir /S /Q %portaudio_src_dir%
 )
 
-if exist %pugixml_build_dir% (
-    rmdir /S /Q %pugixml_build_dir%
+if exist %portaudio_build_dir% (
+    rmdir /S /Q %portaudio_build_dir%
 )
 
-if exist %pugixml_install_dir% (
-    rmdir /S /Q %pugixml_install_dir%
+if exist %portaudio_install_dir% (
+    rmdir /S /Q %portaudio_install_dir%
 )
 
-7z x -aoa %pugixml_pkg_name%.zip
+7z x -aoa %portaudio_pkg_name%.zip
 
-cd /D %pugixml_src_dir%
-cmake -G%cmake_gen_type% -S. -B%pugixml_build_dir% -DCMAKE_INSTALL_PREFIX=%pugixml_install_dir% ^
-    -DBUILD_SHARED_AND_STATIC_LIBS=OFF -DBUILD_SHARED_LIBS=OFF
+cd /D %portaudio_src_dir%
+cmake -G%cmake_gen_type% -S. -B%portaudio_build_dir% -DCMAKE_INSTALL_PREFIX=%portaudio_install_dir% ^
+    -DPA_BUILD_SHARED=OFF -DPA_BUILD_STATIC=ON
 
 echo.
 echo **** CMAKE VS-PROJECT GENERATED ****
 echo.
 
 call %msvc_env%
-cd /D %pugixml_build_dir%
+cd /D %portaudio_build_dir%
 MSBuild INSTALL.vcxproj /p:Configuration=Release
 @REM MSBuild INSTALL.vcxproj /p:Configuration=Debug
 
@@ -72,7 +72,7 @@ echo **** COMPILATION AND DISTRIBUTION FINISHED ****
 echo.
 
 cd /D %work_dir%
-rmdir /S /Q %pugixml_src_dir% %pugixml_build_dir%
+rmdir /S /Q %portaudio_src_dir% %portaudio_build_dir%
 
 echo.
 echo **** SRC AND BUILD DIR DELETED ****

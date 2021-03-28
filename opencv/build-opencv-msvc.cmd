@@ -12,14 +12,18 @@ set opencv_build_dir=%work_dir%\build
 set opencv_install_dir=D:\Library\OpenCV\OpenCV-MSVC
 set cmake_eigen_dir=D:\Library\libeigen\share\eigen3\cmake
 set cmake_tbb_dir=D:\Library\tbb\tbb\cmake
-set cmake_qt_prefix=C:/Qt/Qt5.12.10/5.12.10/msvc2017_64
-set opencv_dir_platform=x64
 set opencv_dir_toolset=vc15
-set cmake_gen_type="Visual Studio 15 2017 Win64"
-set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
 set sed_tool="C:\Program Files\Git\usr\bin\sed.exe"
 set http_proxy=http://127.0.0.1:7890
 set https_proxy=http://127.0.0.1:7890
+set opencv_dir_platform=x64
+set cmake_qt_prefix=C:/Qt/Qt5.12.10/5.12.10/msvc2017_64
+set cmake_gen_type="Visual Studio 15 2017 Win64"
+set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set opencv_dir_platform=x86
+@REM set cmake_qt_prefix=C:/Qt/Qt5.12.10/5.12.10/msvc2017
+@REM set cmake_gen_type="Visual Studio 15 2017"
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 if not exist %opencv_pkg_name%.zip (
     echo **** NOT FIND CODE PACKAGE ****

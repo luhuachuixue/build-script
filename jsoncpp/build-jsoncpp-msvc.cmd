@@ -11,6 +11,8 @@ set jsoncpp_build_dir=%work_dir%\build
 set jsoncpp_install_dir=D:\Library\libjsoncpp
 set cmake_gen_type="Visual Studio 15 2017 Win64"
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set cmake_gen_type="Visual Studio 15 2017"
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 if not exist %jsoncpp_pkg_name%.zip (
     echo **** NOT FIND CODE PACKAGE ****
@@ -54,7 +56,7 @@ if exist %jsoncpp_install_dir% (
 
 cd /D %jsoncpp_src_dir%
 cmake -G%cmake_gen_type% -S. -B%jsoncpp_build_dir% -DCMAKE_INSTALL_PREFIX=%jsoncpp_install_dir% ^
-    -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
+    -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_STATIC_LIBS=ON
 
 echo.
 echo **** CMAKE VS-PROJECT GENERATED ****

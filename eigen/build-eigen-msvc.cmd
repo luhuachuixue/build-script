@@ -12,6 +12,8 @@ set eigen_install_dir=D:\Library\libeigen
 set cmake_boost_dir=D:\Library\libboost\lib\cmake\Boost-1.75.0
 set cmake_gen_type="Visual Studio 15 2017 Win64"
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set cmake_gen_type="Visual Studio 15 2017"
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 if not exist %eigen_pkg_name%.zip (
     echo **** NOT FIND CODE PACKAGE ****

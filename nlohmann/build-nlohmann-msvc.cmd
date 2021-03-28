@@ -11,6 +11,8 @@ set nlohmann_build_dir=%work_dir%\build
 set nlohmann_install_dir=D:\Library\libnlohmann
 set cmake_gen_type="Visual Studio 15 2017 Win64"
 set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+@REM set cmake_gen_type="Visual Studio 15 2017"
+@REM set msvc_env="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
 
 if not exist %nlohmann_pkg_name%.zip (
     echo **** NOT FIND CODE PACKAGE ****
