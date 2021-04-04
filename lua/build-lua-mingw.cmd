@@ -2,7 +2,7 @@
 
 setlocal
 
-set lua_version=5.4.2
+set lua_version=5.4.3
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
 set lua_pkg_name=lua-%lua_version%

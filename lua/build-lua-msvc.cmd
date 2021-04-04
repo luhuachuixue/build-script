@@ -4,7 +4,7 @@ setlocal
 
 set lua_ver_major=5
 set lua_ver_minor=4
-set lua_ver_patch=2
+set lua_ver_patch=3
 set lua_suffix=%lua_ver_major%%lua_ver_minor%
 set lua_version=%lua_ver_major%.%lua_ver_minor%.%lua_ver_patch%
 set work_dir=%~dp0

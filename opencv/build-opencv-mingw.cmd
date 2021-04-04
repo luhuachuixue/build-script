@@ -2,7 +2,7 @@
 
 setlocal
 
-set opencv_version=4.5.1
+set opencv_version=4.5.2
 set work_dir=D:\tmp
 set opencv_pkg_name=opencv-%opencv_version%
 set opencv_extra_pkg_name=opencv_contrib-%opencv_version%
@@ -12,8 +12,8 @@ set opencv_build_dir=%work_dir%\build
 set opencv_install_dir=D:\Library\OpenCV\OpenCV-MinGW
 set cmake_eigen_dir=D:\Library\libeigen\share\eigen3\cmake
 set cmake_qt_prefix=C:/Qt/Qt5.12.10/5.12.10/mingw73_64
-set http_proxy=http://127.0.0.1:7890
-set https_proxy=http://127.0.0.1:7890
+@REM set http_proxy=http://127.0.0.1:7890
+@REM set https_proxy=http://127.0.0.1:7890
 
 if not exist %opencv_pkg_name%.zip (
     echo **** NOT FIND CODE PACKAGE ****
@@ -97,11 +97,12 @@ cmake -G"MinGW Makefiles" -S. -B%opencv_build_dir% -DCMAKE_INSTALL_PREFIX=%openc
     -DOPENCV_EXTRA_MODULES_PATH=%opencv_extra_mod_dir% -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON ^
     -DOPENCV_ENABLE_NONFREE=ON -DWITH_OPENMP=ON -DWITH_OPENCL=ON -DWITH_OPENCL_SVM=ON ^
     -DBUILD_PROTOBUF=ON -DWITH_PROTOBUF=ON -DBUILD_JASPER=ON -DWITH_JASPER=ON ^
-    -DWITH_EIGEN=ON -DEigen3_DIR=%cmake_eigen_dir% -DWITH_OPENGL=ON -DWITH_QT=ON ^
+    -DWITH_EIGEN=ON -DEigen3_DIR=%cmake_eigen_dir% -DWITH_WIN32UI=OFF -DWITH_OPENGL=ON -DWITH_QT=ON ^
     -DQT_MAKE_EXECUTABLE=%cmake_qt_prefix%/bin/qmake.exe -DQt5_DIR=%cmake_qt_prefix%/lib/cmake/Qt5 ^
     -DQt5Concurrent_DIR=%cmake_qt_prefix%/lib/cmake/Qt5Concurrent -DQt5Core_DIR=%cmake_qt_prefix%/lib/cmake/Qt5Core ^
     -DQt5Gui_DIR=%cmake_qt_prefix%/lib/cmake/Qt5Gui -DQt5OpenGL_DIR=%cmake_qt_prefix%/lib/cmake/Qt5OpenGL ^
     -DQt5Test_DIR=%cmake_qt_prefix%/lib/cmake/Qt5Test -DQt5Widgets_DIR=%cmake_qt_prefix%/lib/cmake/Qt5Widgets ^
+    -DWITH_FREETYPE=OFF -DBUILD_opencv_freetype=OFF -DBUILD_opencv_wechat_qrcode=OFF ^
     -DBUILD_opencv_world=OFF -DBUILD_opencv_cvv=ON -DWITH_VTK=OFF -DBUILD_opencv_viz=OFF ^
     -DWITH_OPENJPEG=OFF -DWITH_OPENVX=OFF -DWITH_IPP=OFF -DWITH_TBB=OFF -DWITH_OPENCLAMDBLAS=OFF ^
     -DOPENCV_ALLOCATOR_STATS_COUNTER_TYPE=int64_t -DOPENCV_GENERATE_SETUPVARS=OFF -DWITH_TESSERACT=OFF -DWITH_CUDA=OFF ^

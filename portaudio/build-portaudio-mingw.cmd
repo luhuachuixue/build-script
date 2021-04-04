@@ -5,7 +5,7 @@ setlocal
 set portaudio_version=19.7.0
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
-set portaudio_pkg_name=pa_stable_candidate_v190700_20210307
+set portaudio_pkg_name=portaudio-19.7.0-RC2
 set portaudio_src_dir=%work_dir%\%portaudio_pkg_name%
 set portaudio_build_dir=%work_dir%\tmp-build
 set portaudio_install_dir=D:\Library\libportaudio
