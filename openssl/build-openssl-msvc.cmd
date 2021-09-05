@@ -2,7 +2,7 @@
 
 setlocal
 
-set openssl_version=1.1.1k
+set openssl_version=1.1.1l
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
 set openssl_pkg_name=openssl-%openssl_version%

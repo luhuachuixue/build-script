@@ -2,7 +2,7 @@
 
 setlocal
 
-set cjson_version=1.7.14
+set cjson_version=1.7.15
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
 set cjson_pkg_name=cJSON-%cjson_version%

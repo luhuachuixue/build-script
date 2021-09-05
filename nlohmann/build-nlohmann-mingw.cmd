@@ -2,7 +2,7 @@
 
 setlocal
 
-set nlohmann_version=3.9.1
+set nlohmann_version=3.10.2
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
 set nlohmann_pkg_name=json-%nlohmann_version%
@@ -52,7 +52,7 @@ if exist %nlohmann_install_dir% (
 7z x -aoa %nlohmann_pkg_name%.zip
 
 cd /D %nlohmann_src_dir%
-cmake -G"MinGW Makefiles" -S. -B%nlohmann_build_dir% -DCMAKE_INSTALL_PREFIX=%nlohmann_install_dir% -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+cmake -G"MinGW Makefiles" -S. -B%nlohmann_build_dir% -DCMAKE_INSTALL_PREFIX=%nlohmann_install_dir% -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DJSON_BuildTests=OFF
 
 echo.
 echo **** CMAKE MAKEFILE GENERATED ****

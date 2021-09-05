@@ -2,7 +2,7 @@
 
 setlocal
 
-set boost_version=1_75_0
+set boost_version=1_77_0
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
 set boost_pkg_name=boost_%boost_version%
