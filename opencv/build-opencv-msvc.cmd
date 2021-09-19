@@ -2,7 +2,7 @@
 
 setlocal
 
-set opencv_version=4.5.2
+set opencv_version=4.5.3
 set work_dir=D:\tmp
 set opencv_pkg_name=opencv-%opencv_version%
 set opencv_extra_pkg_name=opencv_contrib-%opencv_version%
@@ -119,7 +119,7 @@ cmake -G%cmake_gen_type% -S. -B%opencv_build_dir% -DCMAKE_INSTALL_PREFIX=%opencv
     -DOPENCV_ENABLE_NONFREE=ON -DWITH_OPENMP=ON -DWITH_OPENCL=ON -DWITH_OPENCL_SVM=ON ^
     -DBUILD_PROTOBUF=ON -DWITH_PROTOBUF=ON -DBUILD_JASPER=ON -DWITH_JASPER=ON ^
     -DWITH_IPP=ON -DBUILD_IPP_IW=ON -DOPENCV_IPP_GAUSSIAN_BLUR=ON -DWITH_TBB=ON -DTBB_DIR=%cmake_tbb_dir% ^
-    -DWITH_EIGEN=ON -DEigen3_DIR=%cmake_eigen_dir% -DWITH_WIN32UI=OFF -DWITH_OPENGL=ON -DWITH_QT=ON ^
+    -DWITH_EIGEN=ON -DEigen3_DIR=%cmake_eigen_dir% -DWITH_OPENGL=ON -DWITH_QT=ON ^
     -DQT_MAKE_EXECUTABLE=%cmake_qt_prefix%/bin/qmake.exe -DQt5_DIR=%cmake_qt_prefix%/lib/cmake/Qt5 ^
     -DQt5Concurrent_DIR=%cmake_qt_prefix%/lib/cmake/Qt5Concurrent -DQt5Core_DIR=%cmake_qt_prefix%/lib/cmake/Qt5Core ^
     -DQt5Gui_DIR=%cmake_qt_prefix%/lib/cmake/Qt5Gui -DQt5OpenGL_DIR=%cmake_qt_prefix%/lib/cmake/Qt5OpenGL ^
