@@ -2,15 +2,18 @@
 
 setlocal
 
-set zlib_version=1.2.11
+set version=1.2.12
 set work_dir=%~dp0
 set work_dir=%work_dir:~0,-1%
-set zlib_pkg_name=zlib-%zlib_version%
-set zlib_src_dir=%work_dir%\%zlib_pkg_name%
-set zlib_build_dir=%work_dir%\build
-set zlib_install_dir=D:\Library\libzlib
+set pkg_name=zlib-%version%
+set pkg_file=%pkg_name%.zip
+set src_dir=%work_dir%\%pkg_name%
+set build_dir=%work_dir%\build
+set install_dir=D:\Library\libzlib
 
-if not exist %zlib_pkg_name%.zip (
+set compile_core=8
+
+if not exist %pkg_file% (
     echo **** NOT FIND CODE PACKAGE ****
     pause
     exit
@@ -37,29 +40,29 @@ if errorlevel 1 (
     exit
 )
 
-if exist %zlib_src_dir% (
-    rmdir /S /Q %zlib_src_dir%
+if exist %src_dir% (
+    rmdir /S /Q %src_dir%
 )
 
-if exist %zlib_build_dir% (
-    rmdir /S /Q %zlib_build_dir%
+if exist %build_dir% (
+    rmdir /S /Q %build_dir%
 )
 
-if exist %zlib_install_dir% (
-    rmdir /S /Q %zlib_install_dir%
+if exist %install_dir% (
+    rmdir /S /Q %install_dir%
 )
 
-7z x -aoa %zlib_pkg_name%.zip
+7z x -aoa %pkg_file%
 
-cd /D %zlib_src_dir%
-cmake -G"MinGW Makefiles" -S. -B%zlib_build_dir% -DCMAKE_INSTALL_PREFIX=%zlib_install_dir%
+cd /D %src_dir%
+cmake -G"MinGW Makefiles" -S. -B%build_dir% -DCMAKE_INSTALL_PREFIX=%install_dir% -DCMAKE_BUILD_TYPE=Release
 
 echo.
 echo **** CMAKE MAKEFILE GENERATED ****
 echo.
 
-cd /D %zlib_build_dir%
-mingw32-make -j8
+cd /D %build_dir%
+mingw32-make -j%compile_core%
 
 echo.
 echo **** COMPILATION FINISHED ****
@@ -72,7 +75,7 @@ echo **** BINARY DISTRIBUTION FINISHED ****
 echo.
 
 cd /D %work_dir%
-rmdir /S /Q %zlib_src_dir% %zlib_build_dir%
+rmdir /S /Q %src_dir% %build_dir%
 
 echo.
 echo **** SRC AND BUILD DIR DELETED ****
